@@ -5,6 +5,9 @@
 
 画像をクリックしてね！(Click Below Image to Play!)
 
+[![べこっこストマック だっぺよ！](img/title_small.jpg)](https://akokubo.github.io/cows_stomachs/)
+
+
 ## ゲームの概要(description)
 
 べこっこ(ウシ)をおいしく育てて出荷！
