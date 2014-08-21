@@ -1,5 +1,6 @@
 # べこっこストマック だっぺよ！(Cow's Stomachs!)
 
+[東北ITコンセプト 福島GameJam 2014](http://fgj.igda.jp/) [宮城・仙台サテライト会場](http://kokucheese.com/event/index/197057/) チーム「べこっこストマック だっぺよ！」の作品です。
 
 ## Play!
 
@@ -27,7 +28,8 @@
 1. コラボレーション(Collaboration with everyone)  
   取り入れる予定です。
 2. フィードバックの反映(We reflect feedbacks)  
-  取り入れる予定です。
+  来場者に試遊していただき、その意見を取り入れました。  
+  また、イベント後も継続してFacebookグループで意見をいただき、それを取り入れて開発しています。
 3. 会場周辺の情景(Let’s take photos outdoors)  
   取り入れる予定です。
 6. タブレット端末への対応(On the tablets)  
