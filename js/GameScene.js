@@ -30,6 +30,11 @@ var daycount = [0,5];
 var weight_aray;
 var macle_aray;
 
+var Cow;
+
+var beauty = 1;
+var faty = 2;
+
 //グループ
 var gp0 = new Group();
 var gp1 = new Group();
@@ -59,7 +64,7 @@ function createGameScene() {
     gp0.addChild(BG);
     
     //牛召喚
-    var Cow = new COW( (coresizex - COWw)/2 ,
+    Cow = new COW( (coresizex - COWw)/2 ,
                       (coresizey - COWh)/2 - BTNh );
     gp1.addChild(Cow);
     
@@ -122,7 +127,7 @@ var WEIGHT = enchant.Class.create(enchant.Sprite,{
         	weight_aray = split_num(game.params.Cow.weight);
         });
         this.on('touchend',function(e){
-        	game.params.Cow.weight += 50;
+        	//game.params.Cow.weight += 50;
         });
     
     }//initialize
@@ -171,7 +176,7 @@ var MACLE = enchant.Class.create(enchant.Sprite,{
         	macle_aray = split_num(game.params.Cow.muscle);
         });
         this.on('touchend',function(e){
-        	game.params.Cow.muscle += 50;
+        	//game.params.Cow.muscle += 50;
         });
     
     }//initialize
@@ -219,12 +224,12 @@ var DAY = enchant.Class.create(enchant.Sprite,{
         	
         	//出荷シーンに偏移
         	if(daycount[0] == 0 && daycount[1] == 0){
-        		game.pushScene(createShipScene());
+        		game.pushScene(createShipScene(Cow.frame));//牛の状態を引数として渡す
         	}
         	
         });
         this.on('touchend',function(e){
-        	daycount[1]--;
+        	//daycount[1]--;
         });
     
     }//initialize
@@ -263,8 +268,6 @@ var COW = enchant.Class.create(enchant.Sprite,{
         var revers = 0.1;
         var weight_beauty = 200;
         var muscle_beauty = 200;
-        var beauty = 1;
-        var faty = 2;
         
         this.on('enterframe',function(e){
             if(this.time %10 == 0){

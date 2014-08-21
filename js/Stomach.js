@@ -146,20 +146,26 @@ var STO = enchant.Class.create(enchant.Sprite,{
         this.on('touchend',function(e){
             this.scaleX -= scalechenge;
             this.scaleY -= scalechenge;
-            
-            reset = true;
-            this.time = 1;
-            sto_NUM = 0;
-            
-            gp2_Sto.removeChild(Eat_btn)
-            
+           
+            //設定なしでやり直すと、ウインドウを閉じる
+            if(sto_NUM == 0){
+            	//シーンを消す
+	            game.removeScene(stomach);
+	            game.removeScene(feedScene);
+            }
+            else {
+	            reset = true;
+	            this.time = 1;
+	            sto_NUM = 0;
+	            
+	            gp2_Sto.removeChild(Eat_btn)
+            }
         });
         this.on('enterframe',function(e){
             if(this.time >= 1){
                 if(this.time %5 == 0){
                     reset = false;
                     this.time = 0;
-                    console.log("reseted");
                 }
                 this.time++;
             }
@@ -218,7 +224,7 @@ var digestion = function (feed, stomach_patterns) {
         for (var i = 0; i < 4; i++) {
             dist += distance(pattern[i], stomach_patterns[i]);
         }
-        var ratio = ((8 - dist) / 8)*2;//最終計算値
+        var ratio = ((8 - dist) / 8)*2 *5;//最終計算値
         var weight = Math.floor(statuses[feed].weight * ratio);
         var muscle = Math.floor(statuses[feed].muscle * ratio);
         game.params.Cow.weight += weight;

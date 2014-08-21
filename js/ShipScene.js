@@ -17,6 +17,9 @@
 //システム
 var message = 1;
 
+var beauty = 1;
+var faty = 2;
+
 //グループ
 var gp0_ship = new Group();
 var gp1_ship = new Group();
@@ -25,7 +28,7 @@ var gp3_ship = new Group();
 var gp4_ship = new Group();
 
 
-var createShipScene = function() {
+var createShipScene = function(Cowstate) {
 	var scene = new Scene();
 	scene.index = SCENE_ENUM.SHIP;
 	
@@ -45,6 +48,7 @@ var createShipScene = function() {
 	//牛
 	var cow = new COWsell((coresizex - COWw)/2,
 							(coresizey - COWh)/2);
+	cow.frame = Cowstate;
 	gp1_ship.addChild(cow);
 	
 	//しきり
@@ -61,9 +65,33 @@ var createShipScene = function() {
 	
 	
 	//テキストウインドウ
-	var window = new WINDOW(0,
-							division_before.y + divisionh);
+	var window = new WINDOW(0,division_before.y + divisionh);
 	gp3_ship.addChild(window);
+	
+	var text = new TEXT(window.x,window.y);
+    gp4_ship.addChild(text);
+	
+	//金額設定
+	var COW_State = 10;
+	if(Cowstate == beauty){COW_State *= 10;}
+	if(Cowstate == faty){COW_State *= 5;}
+	
+	var moneys = split_num(game.params.Cow.weight * game.params.Cow.muscle * COW_State);
+	var money_num = [];
+	var space = 40;
+	
+	console.log(moneys);
+	
+	scene.on('enterframe',function(e){
+		if(text.frame == text.end){
+				for(var i in moneys){
+				money_num[i] = new MONEY(fontw * i + space,window.y + fonth + space
+											,moneys[i]);
+				gp4_ship.addChild(money_num[i])
+			}
+		}
+	});
+	
 	
 	return scene;
 };
@@ -79,6 +107,7 @@ var COWsell = enchant.Class.create(enchant.Sprite,{
         this.y = y;
         this.time = 0;
         this.move = true;
+        this.frame = Cow.frame;
         
         var move = 5;
         
@@ -99,13 +128,11 @@ var WINDOW = enchant.Class.create(enchant.Sprite,{
     initialize: function(x,y){
         
         enchant.Sprite.call(this,windoww,windowh);
-        this.image = game.assets[IMG_WINDOW];
+        this.image = game.assets[IMG_TEXTWINDOW];
         this.frame = 0;
         this.x = x;
         this.y = y;
         
-        var text = new TEXT(this.x,this.y);
-        gp4_ship.addChild(text);
     
     }//initialize
 });//class
@@ -115,15 +142,18 @@ var TEXT = enchant.Class.create(enchant.Sprite,{
     initialize: function(x,y){
         
         enchant.Sprite.call(this,windoww,windowh);
-        this.image = game.assets[IMG_WINDOW];
+        this.image = game.assets[IMG_TEXTWINDOW];
         this.x = x;
         this.y = y;
         this.massege = [[0,0],[12,3]];//[文字数,行数]
         this.timer = 0;
+        this.end = 3;
         
+        /*
         var next = new Sprite(nextw,nexth);
         next.image = game.assets[IMG_NEXT];
         gp4_ship.addChild(next);
+        */
         
         var texter = [[0,0],[12,3]];
         var space = 10;
@@ -135,6 +165,8 @@ var TEXT = enchant.Class.create(enchant.Sprite,{
         
         this.on("enterframe",function(e){
         	this.frame = message;
+        	
+        	/*
         	next.x = this.x + fontw * texter[message][0] + space;
         	next.y = this.y + fonth * texter[message][1];
         	
@@ -144,8 +176,26 @@ var TEXT = enchant.Class.create(enchant.Sprite,{
         	else{gp4_ship.addChild(next);}
         	
         	this.timer++;
+        	*/
+        });
+        
+        this.on("touchend",function(e){
+        	if(this.frame == this.end){location.reload();}
+        	message ++;
         });
     
     }//initialize
 });//class
 
+//マネークラス
+var MONEY = enchant.Class.create(enchant.Sprite,{
+    initialize: function(x,y,frame){
+        
+        enchant.Sprite.call(this,fontw,fonth);
+        this.image = game.assets[IMG_FONTwhite];
+        this.x = x;
+        this.y = y;
+        this.frame = frame;
+    
+    }//initialize
+});//class

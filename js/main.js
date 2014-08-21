@@ -57,8 +57,9 @@ window.onload = function(){
                  IMG_FRAME,
                  IMG_MATH,
                  IMG_DIVISION,
-                 IMG_WINDOW,
-                 IMG_NEXT);
+                 IMG_TEXTWINDOW,
+                 IMG_NEXT,
+                 IMG_FONTwhite);
 
     /**
      * Core#onload

@@ -50,6 +50,7 @@ var IMG_STAGE = "./img/otatidai.png";
 var IMG_FRAME = "./img/frame.png";
 var IMG_MATH = "./img/Math.png";
 var IMG_DIVISION = "./img/desk.png";
-var IMG_WINDOW = "./img/textwindow.png";
+var IMG_TEXTWINDOW = "./img/textwindow.png";
 var IMG_NEXT = "./img/next.png";
+var IMG_FONTwhite = "./img/MathWhite.png";
 
