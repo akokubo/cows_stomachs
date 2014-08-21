@@ -77,7 +77,7 @@ var digestion = function (feed, stomach_patterns) {
         game.params.Cow.muscle += muscle;
 
         game.params.recent.push({
-            Feed: feed,
+            Feed: game.params.Feed,
             Stomachs: sps,
             Digestions: evaluation,
             Weight: weight,
