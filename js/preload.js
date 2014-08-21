@@ -14,7 +14,8 @@ var SCENE_ENUM = {
     FEED: 2,
     STOMACH: 3,
     SHIP: 4,
-    NEWGAME: 5
+    NEWGAME: 5,
+    RUMINATION: 6
 };
 
 //画面サイズ
@@ -54,3 +55,10 @@ var IMG_TEXTWINDOW = "./img/textwindow.png";
 var IMG_NEXT = "./img/next.png";
 var IMG_FONTwhite = "./img/MathWhite.png";
 
+// はんすう画面
+var IMG_RUMINATION_BG = "./img/rumination_bg.png";
+var IMG_SCORE_BOARD = "./img/score_board.png";
+var IMG_FEEDS_MINI_ICON = "./img/feeds_mini_icon.png";
+var IMG_STOMACHS_MINI_ICON = "./img/stomachs_mini_icon.png";
+var IMG_EVALUATIONS_MINI_ICON = "./img/evaluations_mini_icon.png";
+var IMG_OK_BUTTON = "./img/ok_button.png";

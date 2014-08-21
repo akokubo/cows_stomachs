@@ -43,7 +43,7 @@ var createFeedScene = function () {
         button.addEventListener('touchend', function () {
             // ゲームオブジェクトに選んだエサを保存
             game.params.Feed = index;
-            console.log(game.params.Feed);
+            //console.log(game.params.Feed);
 
             // 画面のリセット
             scene.removeChild(header);

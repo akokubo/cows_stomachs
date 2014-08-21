@@ -21,6 +21,7 @@ window.onload = function(){
 
     // ゲーム・パラメータ・オブジェクト
     game.params = {
+        recent: [],
         Stomachs: [],
         Feed: null,
         Cow: { weight: 100.0, muscle: 100.0 }
@@ -40,26 +41,34 @@ window.onload = function(){
      * Set needed file lists in relative/absolute path for attributes of Core#preload
      * 必要なファイルを相対パスで引数に指定する。 ファイルはすべて、ゲームが始まる前にロードされる。
      */
-    game.preload(IMG_TITLE,
-                 IMG_DEMO,
-                 IMG_FEEDS,
-                 IMG_FARM,
-                 IMG_COW,
-                 IMG_BTN,
-                 IMG_STOMACH,
-                 IMG_NUM,
-                 IMG_WINDOW,
-                 IMG_DAY,
-                 IMG_FONT,
-                 IMG_MACLE,
-                 IMG_WEIGHT,
-                 IMG_STAGE,
-                 IMG_FRAME,
-                 IMG_MATH,
-                 IMG_DIVISION,
-                 IMG_TEXTWINDOW,
-                 IMG_NEXT,
-                 IMG_FONTwhite);
+    game.preload(
+        IMG_TITLE,
+        IMG_DEMO,
+        IMG_FEEDS,
+        IMG_FARM,
+        IMG_COW,
+        IMG_BTN,
+        IMG_STOMACH,
+        IMG_NUM,
+        IMG_WINDOW,
+        IMG_DAY,
+        IMG_FONT,
+        IMG_MACLE,
+        IMG_WEIGHT,
+        IMG_STAGE,
+        IMG_FRAME,
+        IMG_MATH,
+        IMG_DIVISION,
+        IMG_TEXTWINDOW,
+        IMG_NEXT,
+        IMG_FONTwhite,
+        IMG_RUMINATION_BG,
+        IMG_SCORE_BOARD,
+        IMG_FEEDS_MINI_ICON,
+        IMG_STOMACHS_MINI_ICON,
+        IMG_EVALUATIONS_MINI_ICON,
+        IMG_OK_BUTTON
+    );
 
     /**
      * Core#onload

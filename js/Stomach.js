@@ -54,7 +54,7 @@ function createStomach(){
             sto_NUM = 0;
             
             gp2_Sto.removeChild(Eat_btn)
-    		console.log("sto_debug = " + sto_debug);
+    		//console.log("sto_debug = " + sto_debug);
     		sto_debug++;
     		sto_reset = false;
     	}
@@ -174,66 +174,7 @@ var STO = enchant.Class.create(enchant.Sprite,{
     }//initialize
 });//class
 
-var digestion = function (feed, stomach_patterns) {
-    var feeds = [
-        "leaf",
-        "humus",
-        "hay",
-        "soy",
-        "corn",
-        "beer",
-        "salt"
-    ];
 
-//最適パターン
-    var patterns = {
-        "leaf":  [0, 0, 3, 1],
-        "humus": [0, 2, 3, 3],
-        "hay":   [0, 0, 3, 3],
-        "soy":   [0, 3, 3, 1],
-        "corn":  [0, 0, 3, 1],
-        "beer":  [2, 3, 1, 1],
-        "salt":  [2, 3, 3, 3]
-    };
-//最適パターン時の上昇値
-    var statuses = {
-        "leaf":  { "weight": 5, "muscle": 5},
-        "humus": { "weight": 7, "muscle": 3},
-        "hay":   { "weight": 6, "muscle": 4},
-        "soy":   { "weight": 10, "muscle": 0},
-        "corn":  { "weight": 10, "muscle": 0},
-        "beer":  { "weight": 10, "muscle": 10},
-        "salt":  { "weight": -1, "muscle": 10}
-    };
-
-    var functions = [
-        [0, 0], // 食物繊維
-        [1, 0], // 水分吸収
-        [0, 1], // 毒素分解
-        [1, 1]  // 栄養吸収
-    ];
-
-    var pattern = patterns[feeds[feed]];
-
-    var distance = function (p1, p2) {
-        return (Math.abs(functions[p1][0] - functions[p2][0]) + Math.abs(functions[p1][1] - functions[p2][1]));
-    };
-
-    var execute = function (feed, pattern, stomach_patterns) {
-        var dist = 0;
-        for (var i = 0; i < 4; i++) {
-            dist += distance(pattern[i], stomach_patterns[i]);
-        }
-        var ratio = ((8 - dist) / 8)*2 *5;//最終計算値
-        var weight = Math.floor(statuses[feed].weight * ratio);
-        var muscle = Math.floor(statuses[feed].muscle * ratio);
-        game.params.Cow.weight += weight;
-        game.params.Cow.muscle += muscle;
-        console.log('weight:' + game.params.Cow.weight);
-        console.log('muscle:' + game.params.Cow.muscle);
-    };
-    execute(feeds[feed], pattern, stomach_patterns);
-};
 
 //イートボタンクラス
 var EAT = enchant.Class.create(enchant.Sprite,{
@@ -252,9 +193,9 @@ var EAT = enchant.Class.create(enchant.Sprite,{
             this.scaleY += scalechenge;
         });
         this.on('touchend',function(e){
-            console.log(game.params.Feed);
-            console.log(game.params.Stomachs);
-            digestion(game.params.Feed, game.params.Stomachs);
+            //console.log(game.params.Feed);
+            //console.log(game.params.Stomachs);
+            //digestion(game.params.Feed, game.params.Stomachs);
             
             //次回開いたときにリセットさせるトリガー
             sto_reset = true;
@@ -270,12 +211,14 @@ var EAT = enchant.Class.create(enchant.Sprite,{
             //自分を消す
             gp2_Sto.removeChild(this)
             
+            this.scaleX -= scalechenge;
+            this.scaleY -= scalechenge;
+
             //シーンを消す
             game.removeScene(stomach);
             game.removeScene(feedScene);
-            
-            this.scaleX -= scalechenge;
-            this.scaleY -= scalechenge;
+
+            game.pushScene(createRuminationScene());            
         });
     
     }//initialize
