@@ -60,12 +60,13 @@ var digestion = function (feed, stomach_patterns) {
     };
 
     execute = function (feed, pattern, stomach_patterns) {
-        var dist = 0, sps = [], evaluation = [], i, ratio, weight, muscle;
+        var dist = 0, sps = [], evaluation = [], i, d, ratio, weight, muscle;
 
         for (i = 0; i < 4; i += 1) {
             sps[i] = stomach_patterns[i];
-            dist += distance(pattern[i], stomach_patterns[i]);
-            evaluation.push(dist);
+            d = distance(pattern[i], stomach_patterns[i]);
+            dist += d;
+            evaluation.push(d);
         }
 
         ratio = ((8 - dist) / 8) * 9.9;//最終計算値
