@@ -60,8 +60,10 @@ var digestion = function (feed, stomach_patterns) {
     };
 
     execute = function (feed, pattern, stomach_patterns) {
-        var dist = 0, evaluation = [], i, ratio, weight, muscle;
+        var dist = 0, sps = [], evaluation = [], i, ratio, weight, muscle;
+
         for (i = 0; i < 4; i += 1) {
+            sps[i] = stomach_patterns[i];
             dist += distance(pattern[i], stomach_patterns[i]);
             evaluation.push(dist);
         }
@@ -73,13 +75,15 @@ var digestion = function (feed, stomach_patterns) {
         game.params.muscle = muscle;
         game.params.Cow.weight += weight;
         game.params.Cow.muscle += muscle;
+
         game.params.recent.push({
-            Feed: game.params.Feed,
-            Stomachs: game.params.Stomachs,
+            Feed: feed,
+            Stomachs: sps,
             Digestions: evaluation,
             Weight: weight,
             Muscle: muscle
         });
+
         //console.log('weight:' + game.params.Cow.weight);
         //console.log('muscle:' + game.params.Cow.muscle);
     };
@@ -194,6 +198,7 @@ var createRuminationScene = function () {
         feed.moveTo(130, score_height * (i + 1) + margin_top);
         scene.addChild(feed);
 
+        //console.log(game.params.recent[i].Stomachs);
         for (j = 0; j < 4; j += 1) {
             stomach = new Sprite(64, 64);
             stomach.image = stomachs_icon;
