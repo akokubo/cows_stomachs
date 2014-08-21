@@ -9,6 +9,7 @@ var createTitleScene = function() {
 	scene.index = SCENE_ENUM.TITLE;
     scene.frame = 0;
 	bg.image = game.assets[IMG_TITLE];
+    bg.frame = 0;
 	scene.addChild(bg);
 
 	scene.addEventListener('touchend', function(e){
@@ -18,9 +19,17 @@ var createTitleScene = function() {
     
     scene.addEventListener('enterframe', function(e){
         scene.frame++;
-        if (scene.frame >= game.fps * 10) {
-            game.pushScene(createDemoScene());
+
+        if (scene.frame >= game.fps * 12) {
+            bg.frame = 0;
             scene.frame = 0;
+            game.pushScene(createDemoScene());
+        } else if (scene.frame >= game.fps * 9) {
+            bg.frame = 3;
+        } else if (scene.frame >= game.fps * 6) {
+            bg.frame = 2;
+        } else if (scene.frame >= game.fps * 3) {
+            bg.frame = 1;
         }
     });
 
