@@ -24,7 +24,7 @@ var coresizey = 960;
 
 
 //タイトル画面画像
-var IMG_TITLE = "./img/title-4.png";
+var IMG_TITLE = "./img/title-5.png";
 
 //デモ画面画像
 var IMG_DEMO = "./img/demo.png";

@@ -20,10 +20,12 @@ var createTitleScene = function() {
     scene.addEventListener('enterframe', function(e){
         scene.frame++;
 
-        if (scene.frame >= game.fps * 12) {
+        if (scene.frame >= game.fps * 15) {
             bg.frame = 0;
             scene.frame = 0;
             game.pushScene(createDemoScene());
+        } else if (scene.frame >= game.fps * 12) {
+            bg.frame = 4;
         } else if (scene.frame >= game.fps * 9) {
             bg.frame = 3;
         } else if (scene.frame >= game.fps * 6) {
