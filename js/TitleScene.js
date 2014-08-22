@@ -23,7 +23,7 @@ var createTitleScene = function() {
         if (scene.frame >= game.fps * 15) {
             bg.frame = 0;
             scene.frame = 0;
-            game.pushScene(createDemoScene());
+            //game.pushScene(createDemoScene());
         } else if (scene.frame >= game.fps * 12) {
             bg.frame = 4;
         } else if (scene.frame >= game.fps * 9) {
