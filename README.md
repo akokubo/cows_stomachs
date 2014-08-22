@@ -28,12 +28,12 @@
 # 実績(Diversifier)
 
 1. コラボレーション(Collaboration with everyone)  
-  エンディングに取り入れる予定です。
+  タイトルシーンにお絵描きワークショップの素材を使用。
 2. フィードバックの反映(We reflect feedbacks)  
   来場者に試遊していただき、その意見を取り入れました。  
   また、イベント後も継続してFacebookグループで意見をいただき、それを取り入れて開発しています。
 3. 会場周辺の情景(Let’s take photos outdoors)  
-  エンディングに取り入れる予定です。
+  タイトルシーンに周辺の情景を使用。
 6. タブレット端末への対応(On the tablets)  
   タブレット端末で動作します。
 7. パートナーツールの使用(We use the tools of partners)  
